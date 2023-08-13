@@ -7,9 +7,11 @@
     require_once 'produto_controller.php';
     foreach ($produto as $key => $produto) {
     $id = $produto->id;
+    $nome = $produto->nome;
     $descricao = $produto->descricao;
     $custo = $produto->custo;
     $fornecedor = $produto->fornecedor;
+    $categoria = $produto->categoria;
     $foto = $produto->foto;
     $_SESSION['foto']=$produto->foto;
     }
@@ -18,6 +20,11 @@
 
 <h1>Cadastro de Produto</h1>
 <form name="form1" action="index.php?link=4&acao=<?php if(!isset($metodo)){echo'inserir';}elseif($metodo == 'alterar'){echo 'alterar';}else{echo "excluir";}?>" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label>Nome</label>
+        <input type="text" name="nome" class="form-control" value="<?php if(isset($nome)){echo $nome;}else{echo "";}?>">
+    </div>
+
     <div class="mb-3">
         <label>Descrição</label>
         <input type="text" name="descricao" class="form-control" value="<?php if(isset($descricao)){echo $descricao;}else{echo "";}?>">
@@ -30,6 +37,16 @@
         <label>Fornecedor</label>
         <input type="text" name="fornecedor" class="form-control" value="<?php if(isset($fornecedor)){echo $fornecedor;}else{echo "";}?>">
     </div>
+
+    <div class="mb-3">
+        <label>Categoria</label>
+        <select name='categoria'>
+        <option value='eletronicos' <?php if(isset($categoria) && $categoria == 'eletronicos'){echo"selected";}?>>Eletrônicos</option>
+        <option value='roupas' <?php if(isset($categoria) && $categoria == 'roupas'){echo"selected";}?>>Roupas</option>
+        <option value='alimentos' <?php if(isset($categoria) && $categoria == 'alimentos'){echo"selected";}?>>Alimentos</option>
+        </select>
+    </div>
+
     <div class="mb-3">
         <label>Foto</label>
         <input type="file" name="foto" class="form-control">

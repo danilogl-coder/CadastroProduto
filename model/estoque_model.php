@@ -1,12 +1,11 @@
 <?php
-class Produto{
+class Estoque{
     private $id;
+    private $idProduto;
     private $nome;
     private $descricao;
-    private $custo;
-    private $fornecedor;
-    private $foto;
     private $categoria;
+    private $quantidade;
     
     public function __get($atributo){
         return $this->$atributo;

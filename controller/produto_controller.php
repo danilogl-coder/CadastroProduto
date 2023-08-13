@@ -11,10 +11,12 @@
     if($acao == "inserir")
     {
         $produto = new Produto();
+        $produto->__set('nome',$_POST['nome']);
         $produto->__set('descricao',$_POST['descricao']);
         $produto->__set('custo',$_POST['custo']);
         $produto->__set('fornecedor',$_POST['fornecedor']);
         $produto->__set('foto',$_FILES['foto']['name']);
+        $produto->__set('categoria',$_POST['categoria']);
 
         $conexao = new Conexao();
 

@@ -1,52 +1,58 @@
 <?php 
-$acao= 'pesquisar';
-require_once 'produto_controller.php';
+$acaoe= 'recuperar';
+require_once 'estoque_controller.php';
 
 ?>
 <div class="container text-center">
+   
+    <hr>
+
     <div class="row">
+        <?php foreach ($estoque as $key => $estoque) {?>
+        <?php if($estoque->quantidade != null){?>
         <div class="col">
-        <!-- Card Inicio 1 -->
+            
+        <div class="card-columns">
 
         <div class="card">
-        <div class="card-header">
-            
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Cadastro de Produto com PHP e Mysql</h5>
-            <p class="card-text">Site para desenvolvimento de cadastro de produto</p>
-            <a href="#" class="btn btn-primary">Home</a>
-        </div>
+            <div class="card-header d-flex justify-content-center">
+                <h1><?= $estoque->nome ?></h1>
+            </div>
+            <img class="card-img-top" src="fotoProduto/<?= $estoque->foto?>" alt="Card image cap">
+            <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card-title d-flex justify-content-center">
+                        <h1>R$<?= $estoque->custo?>,00</h1>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card-title d-flex justify-content-center">
+                        <h1>QT:<?= $estoque->quantidade?></h1>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="card-text">
+                    <h4><?=$estoque->descricao?></h4>
+                </div>
+            </div>
+            <div>
+                <a href="index.php?link=7&acaoe=comprar&ide=<?=$estoque->id?>&quantidade=<?=$estoque->quantidade - 1?>">
+                <button class="btn btn-success">
+                    Comprar
+                </button>
+                 </a>
+            </div>
+
         </div>
 
-        <!-- Card Fim 1 -->
-        </div>  
-        <div class="col">
-         <!-- Card Inicio 2 -->
-
-       
         </div>
 
-        <!-- Card Fim 2 -->
         </div>
-    </div>
-
-    <div class="row">
-        <?php foreach ($produto as $key => $produto) {?>
-        <div class="col">
-         <!-- Card Inicio 3 -->
-
-         <div class="card">
-        <img class="card-img-top" src="fotoProduto/<?= $produto->foto;?>" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title"><?= $produto->custo * 1.8?></h5>
-            <p class="card-text"><?= $produto->descricao?></p>
-            <a href="#" class="btn btn-primary">Comprar</a>
-        </div>
-        </div>
-
-        <!-- Card Fim 3 -->
-        </div>
+        <?php }?>
         <?php }?>
     </div>
 </div>

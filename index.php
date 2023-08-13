@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Estou importando o BootStrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <!-- Estou importando icones do BootStrap --> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title></title>
 </head>
 <body>
@@ -26,6 +28,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php?link=3">Área Restrita</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?link=5">Estoque</a>
+            </li>
            
             </ul>
         </div>
@@ -40,6 +45,11 @@
         $pag[2]='cadProduto.php';
         $pag[3]='areaRestrita.php';
         $pag[4]='produto_controller.php';
+        $pag[5]='estoque.php';
+        $pag[6]='cadEstoque.php';
+        $pag[7]='estoque_controller.php';
+        $pag[8]='produtoLista.php';
+
 
         if(!empty($link)){
             if(file_exists($pag[$link])){

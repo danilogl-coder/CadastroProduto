@@ -10,14 +10,16 @@ class ProdutoService{
 
     public function inserir()
     {
-        $query = "insert into produtos (descricao, custo, fornecedor, foto)
-        values(?,?,?,?)";
+        $query = "insert into produtos (nome, descricao, custo, fornecedor, foto, categoria)
+        values(?,?,?,?,?,?)";
 
         $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue(1,$this->produto->__get('descricao'));
-        $stmt->bindValue(2,$this->produto->__get('custo'));
-        $stmt->bindValue(3,$this->produto->__get('fornecedor'));
-        $stmt->bindValue(4,$this->produto->__get('foto'));
+        $stmt->bindValue(1,$this->produto->__get('nome'));
+        $stmt->bindValue(2,$this->produto->__get('descricao'));
+        $stmt->bindValue(3,$this->produto->__get('custo'));
+        $stmt->bindValue(4,$this->produto->__get('fornecedor'));
+        $stmt->bindValue(5,$this->produto->__get('foto'));
+        $stmt->bindValue(6,$this->produto->__get('categoria'));
 
         if($stmt->execute())
         {
@@ -28,7 +30,7 @@ class ProdutoService{
     }
     public function recuperar()
     {
-        $query = 'select id, descricao, custo, fornecedor, foto from produtos';
+        $query = 'select id, nome, descricao, custo, fornecedor, categoria, foto from produtos';
         $stmt=$this->conexao->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -36,7 +38,7 @@ class ProdutoService{
 
     public function recuperarProduto($id)
     {
-    $query = 'select id, descricao, custo, fornecedor, foto from produtos where id = ?';
+    $query = 'select id, nome, descricao, custo, fornecedor, categoria, foto from produtos where id = ?';
     $stmt=$this->conexao->prepare($query);
     $stmt->bindValue(1,$id);
     $stmt->execute();
@@ -75,7 +77,7 @@ class ProdutoService{
 
     public function pesquisar()
     {
-    $query = 'select id, descricao, custo, fornecedor, foto from produtos limit 5';
+    $query = 'select id, nome, descricao, custo, fornecedor, categoria, foto from produtos limit 5';
     $stmt = $this->conexao->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_OBJ);

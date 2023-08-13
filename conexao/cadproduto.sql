@@ -29,6 +29,7 @@ USE `cadproduto`;
 -- Estrutura para tabela `produtos`
 --
 
+
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
   `descricao` varchar(100) NOT NULL,
